@@ -11,6 +11,9 @@ Things you can customize:
 
 You should provide a mount point for /var/jenkins_home if you want to persist the data for the server.
 
+If you want to supply a casc.yaml file you should mount it into the container as follows: 
+    -v /path/to/jenkins/casc.yml:/usr/share/jenkins/casc/casc.yaml:ro
+
 See also: 
   - https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code
   - https://www.popularowl.com/jenkins/automating-jenkins-install-docker-terraform/
