@@ -9,7 +9,10 @@ ENV CASC_JENKINS_CONFIG /usr/share/jenkins/casc/casc.yaml
 COPY admin-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY jenkins.sh /usr/local/bin/jenkins-custom.sh
 
+USER root
 RUN mkdir -p /usr/share/jenkins/casc
+USER jenkins
+
 # Install plugins
 RUN /bin/jenkins-plugin-cli -p configuration-as-code:1.47 matrix-auth:2.6.6 authorize-project:1.4.0
 
