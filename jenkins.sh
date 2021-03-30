@@ -10,7 +10,7 @@ find "${REF}" \( -type f -o -type l \) -exec bash -c '. /usr/local/bin/jenkins-s
 
 if [ -n "${JENKINS_PLUGINS}" ]; then
     echo "Installing plugins: ${JENKINS_PLUGINS}"
-    /bin/jenkins-plugin-cli -p ${JENKINS_PLUGINS}
+    /usr/local/bin/install-plugins.sh ${JENKINS_PLUGINS}
 fi
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
