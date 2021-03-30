@@ -3,7 +3,7 @@ FROM jenkins/jenkins:2.277.1-lts-centos7
 # Skip install wizard - don't forget to setup the root URL
 # and configure authentication and authorization
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
-ENV CASC_JENKINS_CONFIG /usr/share/jenkins/casc/casc.yaml
+ENV JENKINS_CASC_CONFIG /usr/share/jenkins/casc/casc.yaml
 
 # Add admin user after startup, setup authentication
 COPY admin-user.groovy /usr/share/jenkins/ref/init.groovy.d/

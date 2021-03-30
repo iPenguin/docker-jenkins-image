@@ -13,6 +13,10 @@ if [ -n "${JENKINS_PLUGINS}" ]; then
     /bin/jenkins-plugin-cli -p ${JENKINS_PLUGINS} -d ${JENKINS_HOME}/plugins
 fi
 
+if [ -e "${JENKINS_CASC_CONFIG}" ]; then
+    CASC_JENKINS_CONFIG=${JENKINS_CASC_CONFIG}
+fi
+
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
 
