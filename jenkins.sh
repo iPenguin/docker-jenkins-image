@@ -9,6 +9,7 @@ echo "--- Copying files at $(date)" >> "$COPY_REFERENCE_FILE_LOG"
 find "${REF}" \( -type f -o -type l \) -exec bash -c '. /usr/local/bin/jenkins-support; for arg; do copy_reference_file "$arg"; done' _ {} +
 
 if [ -n "${JENKINS_PLUGINS}" ]; then
+    echo "Installing plugins: ${JENKINS_PLUGINS}"
     /bin/jenkins-plugin-cli -p ${JENKINS_PLUGINS}
 fi
 
