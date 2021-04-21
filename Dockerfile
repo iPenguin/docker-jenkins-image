@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.277.2-lts-centos7
+FROM jenkins/jenkins:2.277.3-lts-centos7
 
 # Skip install wizard - don't forget to setup the root URL
 # and configure authentication and authorization
