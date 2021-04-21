@@ -21,7 +21,7 @@ fi
 if [ ! -e "/var/jenkins_home/jenkins.security.QueueItemAuthenticatorConfiguration.xml" ]
 then
   echo "--- Copy in security settings"
-  cp /usr/share/jenkins/jenkins-security.xml /var/jenkins_home/jenkins.security.QueueItemAuthenticatorConfiguration.xml
+  cp /usr/share/jenkins/jenkins.security.xml /var/jenkins_home/jenkins.security.QueueItemAuthenticatorConfiguration.xml
 fi
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
