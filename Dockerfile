@@ -8,7 +8,7 @@ ENV JENKINS_CASC_CONFIG /usr/share/jenkins/casc/casc.yaml
 # Add admin user after startup, setup authentication
 COPY admin-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 COPY jenkins.sh /usr/local/bin/jenkins-custom.sh
-COPY jenkins.security.QueueItemAuthenticatorConfiguration.xml /var/jenkins_home/
+COPY jenkins-security.xml /usr/share/jenkins/
 
 USER root
 RUN mkdir -p /usr/share/jenkins/casc

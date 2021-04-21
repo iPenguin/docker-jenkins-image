@@ -9,12 +9,19 @@ echo "--- Copying files at $(date)" >> "$COPY_REFERENCE_FILE_LOG"
 find "${REF}" \( -type f -o -type l \) -exec bash -c '. /usr/local/bin/jenkins-support; for arg; do copy_reference_file "$arg"; done' _ {} +
 
 if [ -n "${JENKINS_PLUGINS}" ]; then
-    echo "Installing plugins: ${JENKINS_PLUGINS}"
-    /bin/jenkins-plugin-cli -p ${JENKINS_PLUGINS} -d ${JENKINS_HOME}/plugins
+  echo "--- Installing plugins: ${JENKINS_PLUGINS}"
+  /bin/jenkins-plugin-cli -p ${JENKINS_PLUGINS} -d ${JENKINS_HOME}/plugins
 fi
 
 if [ -e "${JENKINS_CASC_CONFIG}" ]; then
-    CASC_JENKINS_CONFIG=${JENKINS_CASC_CONFIG}
+  echo "--- Set CASC Config"
+  CASC_JENKINS_CONFIG=${JENKINS_CASC_CONFIG}
+fi
+
+if [ ! -e "/var/jenkins_home/jenkins.security.QueueItemAuthenticatorConfiguration.xml" ]
+then
+  echo "--- Copy in security settings"
+  cp /usr/share/jenkins/jenkins-security.xml /var/jenkins_home/jenkins.security.QueueItemAuthenticatorConfiguration.xml
 fi
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
